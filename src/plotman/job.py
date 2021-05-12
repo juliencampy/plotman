@@ -158,6 +158,8 @@ class Job:
                             )
                             if job.help:
                                 continue
+                            if proc.cpu_times().user == 0.0: # Allows to only select the parent jobs, there should be a cleaner way...
+                                continue
                             jobs.append(job)
 
         return jobs
